@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ── Default tokens (dark — overridden by ThemeProvider on mount) ── */
+:root {
+  --bg-primary:     #050914;
+  --bg-secondary:   #0a1628;
+  --bg-tertiary:    #0f1f3d;
+  --bg-card:        rgba(10, 22, 40, 0.85);
+  --bg-glass:       rgba(15, 31, 61, 0.6);
+  --bg-sidebar:     rgba(5, 9, 20, 0.9);
+  --bg-input:       rgba(10, 22, 40, 0.6);
+
+  --cyan:           #00d4ff;
+  --cyan-dim:       rgba(0, 212, 255, 0.15);
+  --cyan-glow:      0 0 20px rgba(0,212,255,0.4), 0 0 60px rgba(0,212,255,0.1);
+  --cyan-border:    rgba(0, 212, 255, 0.3);
+
+  --purple:         #7c3aed;
+  --purple-light:   #a855f7;
+  --purple-dim:     rgba(124, 58, 237, 0.2);
+
+  --orange:         #f97316;
+  --orange-dim:     rgba(249, 115, 22, 0.15);
+
+  --red-alert:      #ff2d55;
+  --red-dim:        rgba(255, 45, 85, 0.15);
+
+  --green-ok:       #00ff88;
+  --green-dim:      rgba(0, 255, 136, 0.12);
+
+  --text-primary:   #e8f4ff;
+  --text-secondary: #7aa3cc;
+  --text-muted:     #3d5a7a;
+
+  --border:         rgba(0, 212, 255, 0.12);
+  --border-hover:   rgba(0, 212, 255, 0.35);
+
+  --shadow-card:    0 8px 32px rgba(0,0,0,0.5), 0 1px 0 rgba(0,212,255,0.08) inset;
+  --shadow-glow:    0 0 40px rgba(0,212,255,0.15);
+
+  --grid-line:      rgba(0, 212, 255, 0.03);
+  --glow1-color:    rgba(0, 212, 255, 0.06);
+  --glow2-color:    rgba(124, 58, 237, 0.08);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Theme transition ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.25s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cyan-border); border-radius: 4px; }
+
+/* ── Glass card ── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Glow text ── */
+.glow-text {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: var(--cyan-dim);
+}
+
+/* Toggle pill track */
+.toggle-track {
+  width: 34px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+.toggle-track.on {
+  background: var(--cyan-dim);
+  border-color: var(--cyan-border);
+}
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s;
+}
+.toggle-track.on .toggle-thumb {
+  transform: translateX(16px);
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+}
+
+/* ── Animations ── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+  50% { opacity: 0.8; transform: scale(1.15); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan-line {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes theme-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
