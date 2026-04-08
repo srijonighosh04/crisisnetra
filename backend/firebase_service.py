@@ -58,3 +58,11 @@ class FirebaseService:
         except Exception as e:
             logger.error(f"delete_volunteer failed: {e}")
             return False
+
+    async def update_volunteer(self, volunteer_id: str, updates: dict) -> bool:
+        try:
+            self.db.collection("volunteers").document(volunteer_id).update(updates)
+            return True
+        except Exception as e:
+            logger.error(f"update_volunteer failed: {e}")
+            return False
