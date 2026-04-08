@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Upload JSON here</h1>
+  <input type="file" id="fileinput">
+  <pre id="output"></pre>
+  <script>
+    document.getElementById('fileinput').addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        let reader = new FileReader();
+        reader.onload = function(evt) {
+          document.getElementById('output').textContent = evt.target.result;
+        };
+        reader.readAsText(e.target.files[0]);
+      }
+    });
+  </script>
+</body>
+</html>

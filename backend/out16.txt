@@ -1,0 +1,41 @@
+﻿
+============================================================
+  CrisisNetra ΓÇö Setup Validation
+============================================================
+
+1. Environment Variables
+  Γ£à  GOOGLE_CLOUD_PROJECT
+  Γ£à  GOOGLE_MAPS_API_KEY
+  Γ£à  GEMINI_API_KEY
+  Γ£à  Firebase credentials file
+
+2. Python Dependencies
+  Γ£à  fastapi
+  Γ£à  uvicorn
+  Γ£à  httpx
+  Γ£à  firebase-admin
+  Γ£à  pydantic
+  Γ£à  python-dotenv
+
+3. Firebase Connection
+  Γ¥î  Firestore connection
+       ΓåÆ Error: Failed to initialize a certificate credential. Caused by: "Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(1200, 61))"
+       Check credentials and IAM permissions.
+
+4. Google Maps API
+  Γ¥î  Geocoding API
+       ΓåÆ API returned status: REQUEST_DENIED ΓÇö check key & billing
+  Γ¥î  Places API (Nearby Hospitals) ΓÇö Places API status: REQUEST_DENIED
+       ΓåÆ Places API status: REQUEST_DENIED
+
+5. Hospital Alert Service
+  Γ£à  hospital_alert_service.py importable
+  Γ£à  Haversine distance calculation (4.19 km)
+  Γ£à  Ambulance count logic (critical, 10 casualties ΓåÆ 4)
+  Γ£à  hospital_alert_router.py importable
+
+============================================================
+  Results: 14 passed ┬╖ 0 warnings ┬╖ 3 errors
+============================================================
+
+  Γ¥î Fix the errors above before running the app.

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "projectId": "crisisnetra-2026",
+      "projectNumber": "521786366307",
+      "displayName": "CrisisNetra",
+      "name": "projects/crisisnetra-2026",
+      "resources": {
+        "hostingSite": "crisisnetra-2026"
+      },
+      "state": "ACTIVE",
+      "etag": "1_66012244-028d-4c3b-8f83-258fc7ae10d1"
+    }
+  ]
+}

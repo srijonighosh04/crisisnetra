@@ -1,0 +1,38 @@
+steps:
+  # Build backend Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/rescuenet-backend:$COMMIT_SHA", "./backend"]
+
+  # Push backend image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/rescuenet-backend:$COMMIT_SHA"]
+
+  # Deploy backend to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - rescuenet-backend
+      - --image=gcr.io/$PROJECT_ID/rescuenet-backend:$COMMIT_SHA
+      - --region=us-central1
+      - --platform=managed
+      - --memory=512Mi
+      - --allow-unauthenticated
+
+  # Build frontend
+  - name: "node:18"
+    entrypoint: bash
+    args:
+      - -c
+      - "cd frontend && npm ci && npm run build"
+
+  # Deploy frontend to Firebase Hosting
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: bash
+    args:
+      - -c
+      - "npm install -g firebase-tools && firebase deploy --only hosting --project $PROJECT_ID"
+
+images:
+  - "gcr.io/$PROJECT_ID/rescuenet-backend:$COMMIT_SHA"

@@ -1,0 +1,51 @@
+
+============================================================
+  CrisisNetra ù Setup Validation
+============================================================
+
+1. Environment Variables
+python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python 
+validate_firebase.py > 
+out.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (T  
+  raceback (most recent   
+  call last)::String)     
+[], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+  File "C:\Users\aniru\Des
+ktop\mmm\CrisisNetra\backe
+nd\validate_firebase.py", 
+line 40, in <module>
+    check("GOOGLE_CLOUD_PR
+OJECT",
+  File "C:\Users\aniru\Des
+ktop\mmm\CrisisNetra\backe
+nd\validate_firebase.py", 
+line 25, in check
+    print(f"  \u2705  
+{label}")
+  File "C:\Users\aniru\App
+Data\Local\Programs\Python
+\Python311\Lib\encodings\c
+p1252.py", line 19, in 
+encode
+    return codecs.charmap_
+encode(input,self.errors,e
+ncoding_table)[0]
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 2: character 
+maps to <undefined>

@@ -1,0 +1,43 @@
+﻿
+============================================================
+  CrisisNetra ΓÇö Setup Validation
+============================================================
+
+1. Environment Variables
+  Γ£à  GOOGLE_CLOUD_PROJECT
+  Γ£à  GOOGLE_MAPS_API_KEY
+  Γ£à  GEMINI_API_KEY
+  Γ¥î  Firebase credentials file
+       ΓåÆ Create service account key at ./firebase-credentials.json
+       Run: gcloud iam service-accounts keys create firebase-credentials.json --iam-account=rescuenet-backend@YOUR_PROJECT.iam.gserviceaccount.com
+
+2. Python Dependencies
+  Γ£à  fastapi
+  Γ£à  uvicorn
+  Γ£à  httpx
+  Γ£à  firebase-admin
+  Γ£à  pydantic
+  Γ£à  python-dotenv
+
+3. Firebase Connection
+  Γ¥î  Firestore connection
+       ΓåÆ Error: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+       Check credentials and IAM permissions.
+
+4. Google Maps API
+  Γ¥î  Geocoding API
+       ΓåÆ API returned status: REQUEST_DENIED ΓÇö check key & billing
+  Γ¥î  Places API (Nearby Hospitals) ΓÇö Places API status: REQUEST_DENIED
+       ΓåÆ Places API status: REQUEST_DENIED
+
+5. Hospital Alert Service
+  Γ£à  hospital_alert_service.py importable
+  Γ£à  Haversine distance calculation (4.19 km)
+  Γ£à  Ambulance count logic (critical, 10 casualties ΓåÆ 4)
+  Γ£à  hospital_alert_router.py importable
+
+============================================================
+  Results: 13 passed ┬╖ 0 warnings ┬╖ 4 errors
+============================================================
+
+  Γ¥î Fix the errors above before running the app.

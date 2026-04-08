@@ -1,0 +1,6 @@
+﻿[debug] [2026-04-06T16:29:47.738Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/crisisnetra-app:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-04-06T16:29:47.739Z] Request to https://firebase.googleapis.com/v1beta1/projects/crisisnetra-app:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-04-06T16:29:48.045Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/crisisnetra-app:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-04-06T16:30:07.497Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/crisisnetra-2026:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-04-06T16:30:07.497Z] Request to https://firebase.googleapis.com/v1beta1/projects/crisisnetra-2026:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-04-06T16:30:07.848Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/crisisnetra-2026:addFirebase had HTTP Error: 403, The caller does not have permission
