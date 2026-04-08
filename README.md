@@ -1,157 +1,45 @@
-# 🚨 CrisisNetra — AI-Powered Disaster Relief Coordination Platform
+# CrisisNetra 🚨
 
-<p align="center">
-  <strong>Real-time crisis management with AI-driven triage, route optimization, and volunteer coordination</strong>
-</p>
+*Built by Team **Storm7** for our latest hackathon.*
 
----
+## 👥 Meet the Team
+- Aniruddh Viswarajan
+- Srijoni Ghosh
+- Sunetra Pandey
+- Ayan Ali
 
-## ✨ Features
+## 💡 What is CrisisNetra?
+When disasters strike, coordination is everything. We realized that during floods or storms, relief workers struggle with outdated info, blocked roads, and overwhelmed hospitals. 
 
-| Module | Description |
-|--------|-------------|
-| **Dashboard** | Real-time crisis overview with live statistics and alerts |
-| **Hospital Alert System** | Monitors hospital capacity and sends automatic alerts |
-| **AI Triage System** | AI-powered patient classification using severity analysis |
-| **Route Obstacles** | Tracks road blockages and suggests alternate routes |
-| **Weather & Prediction** | Live weather data with disaster prediction models |
-| **Live Map** | Google Maps integration for real-time facility tracking |
-| **Volunteers Registry** | Manage and coordinate relief volunteers |
-| **Task Management** | Assign and track relief operation tasks |
+So we built **CrisisNetra**: a central platform that uses AI and live mapping to make disaster relief actually efficient. It helps direct patients based on severity, tracks road blockages, and manages relief volunteers all in one place.
 
-## 🏗️ Tech Stack
+## 🚀 Key Features
+- **Live Map:** We integrated Google Maps to track hospitals, volunteers, and road obstacles in real-time.
+- **AI Triage System:** Uses Gemini AI to intelligently classify the severity of patients and direct them to the right facilities so hospitals don't get overcrowded.
+- **Volunteer Registry:** Easily onboard and manage people who want to help on the ground.
+- **Live Weather & Predictions:** Grabs data from the OpenWeather API so teams know exactly what conditions they're walking into.
+- **Hospital Capacity Alerts:** Automated alerts when a local hospital is nearing full capacity.
 
-### Frontend
-- **React 18** with functional components & hooks
-- **Google Maps JavaScript API** for live mapping
-- **Firebase Auth** for authentication
-- **Progressive Web App (PWA)** support
+## 🛠️ How we built it
+We split the work into a solid full-stack architecture:
+- **Frontend:** Built with React 18 for a smooth, fast UI. We made it a Progressive Web App (PWA) so it works great on mobile (which is crucial for field workers).
+- **Backend:** Python + FastAPI. It's super fast and handles all the AI logic and data crunching.
+- **Database:** Google Cloud Firestore (NoSQL) for real-time data syncing.
+- **APIs:** Google Maps (for tracking), Gemini (for triage), OpenWeather (for current conditions).
+- **Deployment:** The backend is containerized and running on Google Cloud Run, while the frontend is hosted on Firebase.
 
-### Backend
-- **FastAPI** (Python) — high-performance async API
-- **Google Cloud Firestore** — real-time NoSQL database
-- **Google Gemini AI** — AI-powered triage analysis
-- **OpenWeather API** — live weather & forecasting
+## 💻 Running it locally
 
-### Deployment
-- **Frontend**: Firebase Hosting
-- **Backend**: Google Cloud Run
-- **Database**: Cloud Firestore
+If you want to spin this up on your own machine:
 
----
+1. Clone the repo and navigate to the folder.
+2. Hit up the `frontend` folder, run `npm install`, and then `npm start`.
+3. Open a new terminal, go to the `backend` folder, install the python dependencies with `pip install -r requirements.txt`, and run `python main.py`.
 
-## 🚀 Quick Start
+*(Note: You'll need to create your own `.env` files based on the `.env.example` templates provided since we don't commit our API keys!)*
 
-### Prerequisites
-- Node.js 16+ and npm
-- Python 3.9+
-- Google Cloud account with Firebase project
+## 🔗 Live Links
+- **Web App:** [crisisnetra-2026.web.app](https://crisisnetra-2026.web.app)
+- **API Endpoint:** [crisisnetra-backend.run.app](https://crisisnetra-backend-521786366307.asia-south1.run.app)
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/CrisisNetra.git
-cd CrisisNetra
-```
-
-### 2. Backend Setup
-```bash
-cd backend
-pip install -r requirements.txt
-
-# Copy and fill in your credentials
-cp .env.example .env
-# Edit .env with your actual API keys
-
-# Place your Firebase service account JSON as:
-# backend/firebase-credentials.json
-
-python main.py
-```
-Backend runs on **http://localhost:8000**
-
-### 3. Frontend Setup
-```bash
-cd frontend
-npm install
-
-# Copy and fill in your credentials
-cp .env.example .env
-# Edit .env with your actual API keys
-
-npm start
-```
-Frontend runs on **http://localhost:3000**
-
----
-
-## 🔐 Environment Variables
-
-### Frontend (`frontend/.env`)
-| Variable | Description |
-|----------|-------------|
-| `REACT_APP_FIREBASE_API_KEY` | Firebase Web API key |
-| `REACT_APP_FIREBASE_AUTH_DOMAIN` | Firebase auth domain |
-| `REACT_APP_FIREBASE_PROJECT_ID` | Firebase project ID |
-| `REACT_APP_FIREBASE_STORAGE_BUCKET` | Firebase storage bucket |
-| `REACT_APP_FIREBASE_MESSAGING_SENDER_ID` | Firebase messaging sender ID |
-| `REACT_APP_FIREBASE_APP_ID` | Firebase app ID |
-| `REACT_APP_GOOGLE_MAPS_API_KEY` | Google Maps JavaScript API key |
-| `REACT_APP_API_URL` | Backend API URL (default: `http://localhost:8000`) |
-
-### Backend (`backend/.env`)
-| Variable | Description |
-|----------|-------------|
-| `OPENWEATHER_API_KEY` | OpenWeatherMap API key |
-| `GOOGLE_APPLICATION_CREDENTIALS` | Path to Firebase service account JSON |
-| `PORT` | Server port (default: `8000`) |
-| `ALLOWED_ORIGINS` | CORS allowed origins |
-
-> ⚠️ **Never commit `.env` files or `firebase-credentials.json` to version control!**
-
----
-
-## 📁 Project Structure
-
-```
-CrisisNetra/
-├── backend/
-│   ├── main.py              # FastAPI application entry point
-│   ├── firebase_service.py  # Firestore database operations
-│   ├── requirements.txt     # Python dependencies
-│   ├── .env.example         # Backend env template
-│   └── seed_*.py            # Database seeding scripts
-├── frontend/
-│   ├── public/              # Static assets & index.html
-│   ├── src/
-│   │   ├── pages/           # React page components
-│   │   ├── App.js           # Main application with routing
-│   │   ├── theme.js         # Dark/light theme provider
-│   │   └── index.js         # React entry point
-│   ├── .env.example         # Frontend env template
-│   └── package.json         # Node.js dependencies
-├── .gitignore
-├── LICENSE
-└── README.md
-```
-
----
-
-## 🌐 Live Demo
-
-- **Frontend**: [https://crisisnetra-2026.web.app](https://crisisnetra-2026.web.app)
-- **Backend API**: [https://crisisnetra-backend-521786366307.asia-south1.run.app](https://crisisnetra-backend-521786366307.asia-south1.run.app)
-
----
-
-## 👥 Team
-
-- **Aniruddh** — Full-stack Development & Cloud Deployment
-- **Srijoni** — UI/UX & Frontend
-- **Sunetra** — Backend & AI Integration
-- **Ayan** — Data & Testing
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+Thanks for checking out our project! We had an awesome time building it.
