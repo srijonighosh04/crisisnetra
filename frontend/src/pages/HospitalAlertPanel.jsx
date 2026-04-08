@@ -98,7 +98,7 @@ export default function HospitalAlertPanel() {
           <div style={s.field}><label style={s.label}>Incident Type</label>
             <select style={s.input} value={form.incident_type} onChange={e=>setForm(f=>({...f,incident_type:e.target.value}))}>
               <option value="">— Select incident type —</option>
-              {INCIDENT_TYPES.map(t=><option key={t} value={t}>{t}</option>)}
+              {INCIDENT_TYPES.map(t=><option key={t} value={t} style={{ background: "#0a1628", color: "#e8f4ff" }}>{t}</option>)}
             </select>
           </div>
           <div style={s.field}><label style={s.label}>Severity Level</label>

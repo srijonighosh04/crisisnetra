@@ -2,6 +2,7 @@
 
 /* ── Default tokens (dark — overridden by ThemeProvider on mount) ── */
 :root {
+  color-scheme: dark;
   --bg-primary:     #050914;
   --bg-secondary:   #0a1628;
   --bg-tertiary:    #0f1f3d;
