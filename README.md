@@ -139,7 +139,7 @@ CrisisNetra/
 ## 🌐 Live Demo
 
 - **Frontend**: [https://crisisnetra-2026.web.app](https://crisisnetra-2026.web.app)
-- **Backend API**: [https://crisisnetra-backend-521786366307.asia-south1.run.app](https://crisisnetra-backend-521786366307.asia-south1.run.app)
+- **Backend API**: [https://crisisnetra-backend-7yyolfo6jq-el.a.run.app](https://crisisnetra-backend-7yyolfo6jq-el.a.run.app)
 
 ---
 
