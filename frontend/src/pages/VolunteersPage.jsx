@@ -32,6 +32,17 @@ export default function VolunteersPage() {
     setLoading(false);
   };
 
+  const handleDelete = async (id) => {
+    if (!id) return;
+    if (!window.confirm("Are you sure you want to remove this volunteer?")) return;
+    try {
+      await fetch(`${API_BASE}/api/volunteers/${id}`, { method: "DELETE" });
+      fetchVolunteers();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div style={s.page}>
       <div style={s.eyebrow}>PERSONNEL</div>
@@ -53,12 +64,23 @@ export default function VolunteersPage() {
       ) : (
         <div style={s.list}>
           {volunteers.map((v, i) => (
-            <div key={i} style={s.card}>
+            <div key={v.id || i} style={s.card}>
               <div style={s.cardLine} />
               <div style={s.avatar}>{(v.name||"V")[0].toUpperCase()}</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)" }}>{v.name}</div>
-                <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 3 }}>{v.phone}</div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)" }}>{v.name}</div>
+                    <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 3 }}>{v.phone}</div>
+                  </div>
+                  <button 
+                    onClick={() => handleDelete(v.id)} 
+                    style={s.deleteBtn}
+                    title="Remove Volunteer"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
               <span style={{ ...s.statusPill, background: v.status === "active" ? "rgba(0,255,136,0.1)" : "rgba(249,115,22,0.1)", borderColor: v.status === "active" ? "rgba(0,255,136,0.3)" : "rgba(249,115,22,0.3)", color: v.status === "active" ? "var(--green-ok)" : "var(--orange)" }}>
                 {v.status || "active"}
@@ -84,5 +106,6 @@ const s = {
   statusPill: { fontSize: 11, padding: "4px 12px", borderRadius: 20, border: "1px solid", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" },
   formGroup: { display: "flex", gap: "10px", marginBottom: "20px", background: "var(--bg-card)", padding: "16px", borderRadius: "14px", border: "1px solid var(--border)" },
   input: { flex: 1, padding: "10px 14px", borderRadius: "8px", border: "1px solid var(--border)", background: "var(--bg-input)", color: "var(--text-primary)", outline: "none" },
-  button: { padding: "10px 20px", borderRadius: "8px", background: "var(--cyan)", color: "#000", fontWeight: 600, border: "none", cursor: "pointer" }
+  button: { padding: "10px 20px", borderRadius: "8px", background: "var(--cyan)", color: "#000", fontWeight: 600, border: "none", cursor: "pointer" },
+  deleteBtn: { background: "rgba(255, 45, 85, 0.1)", border: "1px solid rgba(255, 45, 85, 0.2)", color: "var(--red-alert)", borderRadius: "6px", width: "24px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: "12px", transition: "all 0.2s", padding: 0 }
 };

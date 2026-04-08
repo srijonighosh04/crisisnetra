@@ -47,3 +47,14 @@ class FirebaseService:
         except Exception as e:
             logger.error(f"add_volunteer failed: {e}")
             raise
+
+    async def delete_volunteer(self, volunteer_id: str) -> bool:
+        try:
+            # We need to find the document where the 'id' field matches volunteer_id
+            # or if the document ID itself is the volunteer_id
+            # Based on add_volunteer, doc_ref.id is used as both doc ID and field ID
+            self.db.collection("volunteers").document(volunteer_id).delete()
+            return True
+        except Exception as e:
+            logger.error(f"delete_volunteer failed: {e}")
+            return False

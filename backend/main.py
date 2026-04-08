@@ -440,6 +440,19 @@ async def add_volunteer(volunteer: Volunteer):
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
+@app.delete("/api/volunteers/{volunteer_id}")
+async def delete_volunteer(volunteer_id: str):
+    try:
+        firebase = FirebaseService()
+        success = await firebase.delete_volunteer(volunteer_id)
+        if success:
+            return {"message": "Volunteer deleted successfully"}
+        else:
+            raise HTTPException(status_code=404, detail="Volunteer not found")
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
+
 @app.post("/api/crisis/parse")
 async def parse_crisis(data: dict):
     try:
