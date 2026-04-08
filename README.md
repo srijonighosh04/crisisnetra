@@ -49,7 +49,7 @@
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/CrisisNetra.git
+git clone https://github.com/srijonighosh04/crisisnetra.git
 cd CrisisNetra
 ```
 
